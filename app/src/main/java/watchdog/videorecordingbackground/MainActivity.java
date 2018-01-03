@@ -21,10 +21,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(!serviceStarted == true) {
-                    startService();
+                    startServiceFront();
                     serviceStarted = true;
                 } else {
-                    stopService();
+                    stopServiceFront();
                     serviceStarted = false;
                 }
 
@@ -40,5 +40,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void stopService(){
         stopService(new Intent(this, VideoRecordingService.class));
+    }
+
+    public void startServiceFront(){
+        Intent serviceIntent = new Intent(this, VideoRecordingFront.class);
+        startService(serviceIntent);
+    }
+
+    public void stopServiceFront(){
+        stopService(new Intent(this, VideoRecordingFront.class));
     }
 }
